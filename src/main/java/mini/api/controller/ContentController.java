@@ -27,10 +27,12 @@ public class ContentController {
         return list;
     }
 
+
     @PostMapping(value = "/")
     public Content write(Content ct) {
         return cr.save(ct);
     }
+
 
     @GetMapping(value = "/{id}")
     public Content view(@PathVariable int id) {
@@ -43,6 +45,7 @@ public class ContentController {
         ct.setId(id);
         return cr.save(ct);
     }
+
 
     @DeleteMapping(value = "/{id}")
     public void delete(@PathVariable int id) {
