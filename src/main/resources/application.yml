@@ -1,0 +1,59 @@
+spring:
+  profiles: local
+
+  datasource:
+    url: jdbc:mysql://52.79.150.33:3306/miniapi?useUnicode=true&charaterEncoding=utf-8
+    username: root
+    password: hpjs14101306
+    driver-class-name: com.mysql.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    database: mysql
+    show-sql: true
+
+
+security:
+  user:
+    name: user
+    password: test
+
+  oauth2:
+    client:
+      id: foo
+      client-secret: bar
+
+---
+
+spring:
+  profiles: real
+
+  datasource:
+    url: jdbc:mysql://52.79.150.33:3306/miniapi?useUnicode=true&charaterEncoding=utf-8
+    username: root
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    database: mysql
+    show-sql: true
+
+
+security:
+  user:
+    name: user
+    password: test
+
+  oauth2:
+    client:
+      id: foo
+      client-secret: bar

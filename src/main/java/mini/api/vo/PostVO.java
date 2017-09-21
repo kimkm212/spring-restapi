@@ -8,13 +8,13 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity @Data
-@Table(name = "CONTENT")
-public class ContentVO {
+@Table(name = "POST")
+public class PostVO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
-    private Integer id;
+    @Column(name = "POST_ID")
+    private Integer postId;
 
     @Column(name = "SUBJECT", nullable = false, length = 400)
     private String subject;

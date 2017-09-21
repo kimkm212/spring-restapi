@@ -1,49 +1,46 @@
 package mini.api.controller;
 
 import mini.abstracts.MiniAbstractController;
-import mini.api.repository.ContentRepository;
-import mini.api.vo.ContentVO;
+import mini.api.repository.PostRepository;
+import mini.api.vo.PostVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/content")
-public class ContentController extends MiniAbstractController{
+@RequestMapping(value = "/content", produces = "application/json")
+public class PostController extends MiniAbstractController{
 
     @Autowired
-    private ContentRepository cr;
+    private PostRepository cr;
 
 
     @GetMapping(value = "/list/{page}")
-    public Page<ContentVO> list(@PathVariable int page) {
+    public Page<PostVO> list(@PathVariable int page) {
 
         PageRequest request = new PageRequest(page - 1, 10, Sort.Direction.DESC, "id");
-        Page<ContentVO> list = cr.findAll(request);
+        Page<PostVO> list = cr.findAll(request);
         return list;
     }
 
 
     @PostMapping(value = "/")
-    public ContentVO write(ContentVO ct) {
+    public PostVO write(PostVO ct) {
         return cr.save(ct);
     }
 
 
     @GetMapping(value = "/{id}")
-    public ContentVO view(@PathVariable int id) {
+    public PostVO view(@PathVariable int id) {
         return cr.findOne(id);
     }
 
 
     @PutMapping(value = "/{id}")
-    public ContentVO update(@PathVariable int id, ContentVO ct) {
-        ct.setId(id);
+    public PostVO update(@PathVariable int id, PostVO ct) {
+        ct.setPostId(id);
         return cr.save(ct);
     }
 
