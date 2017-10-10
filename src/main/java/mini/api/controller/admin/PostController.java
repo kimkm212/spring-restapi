@@ -1,4 +1,4 @@
-package mini.api.controller;
+package mini.api.controller.admin;
 
 import mini.abstracts.MiniAbstractController;
 import mini.api.repository.PostRepository;

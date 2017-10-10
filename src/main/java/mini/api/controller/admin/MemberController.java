@@ -1,4 +1,4 @@
-package mini.api.controller;
+package mini.api.controller.admin;
 
 import mini.abstracts.MiniAbstractController;
 import org.springframework.web.bind.annotation.RestController;
