@@ -1,14 +1,14 @@
 module.exports = {
     entry: './front_end/index.js',
     output: {
-        path: __dirname + '/src/main/resources/templates/admin/',
+        path: __dirname + '/src/main/resources/static/admin/',
         filename: 'admin-bundle.js'
     },
 
     devServer: {
         inline: true,
         port: 7777,
-        contentBase: __dirname + '/src/main/resources/templates/admin/',
+        contentBase: __dirname + '/src/main/resources/static/admin/',
         historyApiFallback: true
     },
 

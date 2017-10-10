@@ -1,8 +1,8 @@
 import React from 'react';
-import Route from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
-import './reset.scss'
-import './App.scss'
+import './style/reset.scss'
+import './style/App.scss'
 
 class App extends React.Component {
 
@@ -19,8 +19,8 @@ class App extends React.Component {
                         <p>김강민님 환영해엽</p>
                     </div>
                     <ul className="menu-list">
-                        <li>게시판관리</li>
-                        <li>회원관리</li>
+                        <li><Link to="/admin/board">게시판관리</Link></li>
+                        <li><Link to="/admin/member">회원관리</Link></li>
                         <li>3</li>
                         <li>4</li>
                         <li>5</li>

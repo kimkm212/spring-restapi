@@ -1,10 +1,13 @@
 spring:
   profiles: local
 
+  resources:
+    static-locations: classpath:/resources/,classpath:/static/
+
   datasource:
     url: jdbc:mysql://52.79.150.33:3306/miniapi?useUnicode=true&charaterEncoding=utf-8
     username: root
-    password: hpjs14101306
+    password:
     driver-class-name: com.mysql.jdbc.Driver
 
   jpa:
@@ -34,6 +37,9 @@ security:
 
 spring:
   profiles: real
+
+  resources:
+    static-locations: classpath:/resources/,classpath:/static/
 
   datasource:
     url: jdbc:mysql://52.79.150.33:3306/miniapi?useUnicode=true&charaterEncoding=utf-8
