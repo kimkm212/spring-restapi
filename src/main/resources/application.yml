@@ -1,8 +1,6 @@
 spring:
   profiles: local
 
-  resources:
-    static-locations: classpath:/resources/,classpath:/static/
 
   datasource:
     url: jdbc:mysql://52.79.150.33:3306/miniapi?useUnicode=true&charaterEncoding=utf-8
@@ -19,8 +17,12 @@ spring:
     database: mysql
     show-sql: true
 
+
 logging:
-  level: DEBUG
+  level:
+    org:
+      spsringframework:
+        web: debug
 
 
 security:

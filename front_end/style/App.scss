@@ -4,7 +4,8 @@
   min-height: 100vh;
 
   .left {
-    width: 15%;
+    width: 14%;
+    background: rgba(0, 0, 0, 0.84);
 
     .profile{
       display: flex;
@@ -12,17 +13,28 @@
       align-items: center;
       width: 100%;
       height: 300px;
-      background: blue;
-      margin-bottom: 30px;
+      color: white;
     }
 
     .menu-list {
 
+
       li {
-        margin: 5px;
-        padding: 10px 10px;
-        font-size: 16px;
-        border-bottom: 1px solid #efefef;
+        font-size: 17px;
+        color: white;
+        display: flex;
+        align-items: center;
+
+        a {
+          color: white;
+          padding: 25px 25px 25px 20px;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      li:hover {
+        background: red;
       }
     }
 
@@ -30,8 +42,11 @@
   }
 
   .content-area {
-    width : 85%;
-    background: black;
+    width : 86%;
+    padding: 4%;
+
+    .content-body{
+    }
   }
 
 }

@@ -1,42 +1,36 @@
-import React from 'react';
-import {Link} from 'react-router-dom'
-
-import './style/reset.scss'
+import React from 'react'
+import { Route } from 'react-router-dom';
+import BoardManage from './component/BoardManage/BoardManage'
+import HeaderMenu from  './component/HeaderMenu'
 import './style/App.scss'
-
 class App extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render(){
-        return (
-            <div className="admin-main">
-                <header className="left">
-                    <div className="profile">
-                        <div className="profile-img"></div>
-                        <p>김강민님 환영해엽</p>
-                    </div>
-                    <ul className="menu-list">
-                        <li><Link to="/admin/board">게시판관리</Link></li>
-                        <li><Link to="/admin/member">회원관리</Link></li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                        <li>6</li>
-                        <li>7</li>
-                        <li>8</li>
-                        <li>9</li>
-                        <li>0</li>
-                    </ul>
-                </header>
-                <div className="content-area">
-                    바디
-                </div>
-            </div>
-        );
-    }
+  render(){
+
+    return (
+      <div className="admin-main">
+        <HeaderMenu/>
+        <div className="content-area">
+          <div className="ui breadcrumb">
+            <a className="section">Home</a>
+            <i aria-hidden="true" className="right angle icon divider"></i>
+            <a className="section">게시판관리</a>
+            <i aria-hidden="true" className="right angle icon divider"></i>
+            <div className="active section">게시판</div>
+          </div>
+          <h2 className="ui header">게시판 관리</h2>
+          <div className="content-body">
+            <Route path="/admin/board" component={BoardManage}/>
+          </div>
+
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

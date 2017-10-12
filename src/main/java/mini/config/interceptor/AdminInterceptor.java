@@ -17,7 +17,7 @@ public class AdminInterceptor implements HandlerInterceptor{
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
 
         log.info("인터셉터를 탓답마");
-        return true;
+        return false;
     }
 
     @Override

@@ -23,12 +23,12 @@ public class WebConfig  {
                 registry.addMapping("/**");
             }
 
-            @Override
+ /*           @Override
             public void addInterceptors(InterceptorRegistry registry) {
                 registry.addInterceptor(adminInterceptor)
                         .addPathPatterns("/admin/**")
                         .excludePathPatterns("/public/**");
-            }
+            }*/
 
         };
     }
