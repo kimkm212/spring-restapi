@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom'
+import axios from 'axios'
+import ListObject from "./ListObject";
 
 const propTypes = {};
 
@@ -10,6 +12,21 @@ class list extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      page : 1,
+      listData : null
+    }
+  }
+
+  componentDidMount() {
+    axios.get(`http://localhost:8080/api/board/list/${this.state.page}`)
+        .then((res) => {
+          console.log(res.data);
+          this.setState({
+            listData : res.data
+          });
+          console.log(this.state);
+        });
   }
 
   render() {
@@ -19,35 +36,16 @@ class list extends Component {
           <tr>
             <th>No</th>
             <th>게시판 이름</th>
-            <th>Protein</th>
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>Apples</td>
-            <td>200</td>
-            <td>0g</td>
-          </tr>
-          <tr>
-            <td>Orange</td>
-            <td>310</td>
-            <td>0g</td>
-          </tr>
-          <tr>
-            <td>Orange</td>
-            <td>310</td>
-            <td>0g</td>
-          </tr>
-          <tr>
-            <td>Orange</td>
-            <td>310</td>
-            <td>0g</td>
-          </tr>
-          <tr>
-            <td>Orange</td>
-            <td>310</td>
-            <td>0g</td>
-          </tr>
+            {this.state.listData.content.map((obj) => {
+              <ListObject id={obj.boardId} boardNm={obj.boardNm}/>
+            })}
+            <tr>
+              <td>Apples</td>
+              <td>200</td>
+            </tr>
           </tbody>
           <tfoot>
           <tr>

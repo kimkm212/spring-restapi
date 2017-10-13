@@ -10,7 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/board")
+@RequestMapping("/api/board")
 public class BoardController extends MiniAbstractController {
 
     @Autowired
@@ -18,7 +18,7 @@ public class BoardController extends MiniAbstractController {
 
     @GetMapping("/list/{page}")
     public Page<BoardVO> list(@PathVariable int page) {
-        PageRequest request = new PageRequest(page - 1, 10, Sort.Direction.DESC, "id");
+        PageRequest request = new PageRequest(page - 1, 10, Sort.Direction.DESC, "boardId");
         Page<BoardVO> list = boardRepository.findAll(request);
 
         return list;
@@ -29,12 +29,12 @@ public class BoardController extends MiniAbstractController {
         return boardRepository.findOne(id);
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public BoardVO write(BoardVO vo) {
         return boardRepository.save(vo);
     }
 
-    @PutMapping("/")
+    @PutMapping("")
     public BoardVO update (BoardVO vo) {
         return boardRepository.save(vo);
     }
