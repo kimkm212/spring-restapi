@@ -13,39 +13,54 @@ class list extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page : 1,
-      listData : null
+      page : 1
     }
   }
 
   componentDidMount() {
     axios.get(`http://localhost:8080/api/board/list/${this.state.page}`)
         .then((res) => {
-          console.log(res.data);
           this.setState({
             listData : res.data
           });
-          console.log(this.state);
         });
   }
 
+  _renderList () {
+    console.log(this.state.listData);
+    return this.state.listData.content.map( content => {
+      return (
+          <tr>
+            <td>{content.boardId}</td>
+            <td>{content.boardNm}</td>
+            <td>erase</td>
+            <td><i aria-hidden="true" className="erase icon"></i></td>
+          </tr>
+      )
+    });
+  }
+
+
   render() {
+    const listData = this.state.listData;
     return (
         <table className="ui red table">
+          <colgroup>
+            <col style={{width : "15%"}}/>
+            <col style={{width : "auto"}}/>
+            <col style={{width : "10%"}}/>
+            <col style={{width : "10%"}}/>
+          </colgroup>
           <thead>
           <tr>
             <th>No</th>
             <th>게시판 이름</th>
+            <th>수정</th>
+            <th>삭제</th>
           </tr>
           </thead>
           <tbody>
-            {this.state.listData.content.map((obj) => {
-              <ListObject id={obj.boardId} boardNm={obj.boardNm}/>
-            })}
-            <tr>
-              <td>Apples</td>
-              <td>200</td>
-            </tr>
+            {listData? this._renderList() : null}
           </tbody>
           <tfoot>
           <tr>

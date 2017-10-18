@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-const ListObject = ({idx, boardNm}) => {
+const ListObject = ({content}) => {
   return (
       <tr>
-        <td>{idx}</td>
-        <td>{boardNm}</td>
+        <td>{content.boardId}</td>
+        <td>{content.boardNm}</td>
       </tr>
   );
 };

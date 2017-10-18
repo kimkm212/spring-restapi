@@ -29,11 +29,12 @@ class Form extends Component {
     console.log(this.state.boardNm);
     axios.post('http://localhost:8080/api/board',
         {
-          boardNm : this.state.boardNm,
-          boardd : 'gg'
+          boardNm : this.state.boardNm
         }
     ).then((res) => {
       console.log(res);
+      alert(`${res.data.boardNm} 생성완료`);
+      this.props.history.push('/admin/board/list');
     });
 
   }

@@ -9,6 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("/api/board")
 public class BoardController extends MiniAbstractController {
@@ -30,7 +32,7 @@ public class BoardController extends MiniAbstractController {
     }
 
     @PostMapping("")
-    public BoardVO write(BoardVO vo) {
+    public BoardVO write(@RequestBody BoardVO vo) {
         return boardRepository.save(vo);
     }
 
