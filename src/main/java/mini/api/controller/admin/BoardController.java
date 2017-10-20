@@ -37,7 +37,7 @@ public class BoardController extends MiniAbstractController {
     }
 
     @PutMapping("")
-    public BoardVO update (BoardVO vo) {
+    public BoardVO update (@RequestBody BoardVO vo) {
         return boardRepository.save(vo);
     }
 

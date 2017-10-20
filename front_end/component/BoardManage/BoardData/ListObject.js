@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import dateformat from 'dateformat'
 
 class ListObject extends Component {
 
@@ -15,13 +16,13 @@ class ListObject extends Component {
         <tr>
           <td>{index + 1}</td>
           <td>
-            <Link to={`/admin/board/data/${content.boardId}/list`}>{content.boardNm}</Link>
+            {content.subject}
           </td>
           <td>
-            <Link to={`/admin/board/form/${content.boardId}`}><i aria-hidden="true" className="settings icon"/></Link>
+            {dateformat(new Date(content.regDate), 'yyyy-mm-dd')}
           </td>
           <td>
-            <i aria-hidden="true" className="erase icon" onClick={this._del.bind(this)}/>
+            {content.udtDate}
           </td>
         </tr>
     );

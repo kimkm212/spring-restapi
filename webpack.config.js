@@ -1,5 +1,5 @@
 module.exports = {
-    entry: './front_end/index.js',
+    entry: ['babel-polyfill','./front_end/index.js'],
     output: {
         path: __dirname + '/src/main/resources/static/admin/',
         filename: 'admin-bundle.js'
@@ -50,5 +50,7 @@ module.exports = {
             }
 
         ]
-    }
+    },
+
+
 };

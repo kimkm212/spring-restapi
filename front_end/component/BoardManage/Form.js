@@ -11,7 +11,23 @@ class Form extends Component {
 
   constructor(props) {
     super(props);
+    this.id = this.props.match.params.id;
+    this._getBoardData = this._getBoardData.bind(this);
+    this._getBoardData();
     this.state = {};
+  }
+
+  _getBoardData() {
+    if(this.id){
+      axios.get(`http://localhost:8080/api/board/${this.id}`)
+          .then(res => {
+            console.log(res.data);
+            this.setState({
+              boardId : res.data.boardId,
+              boardNm : res.data.boardNm
+            });
+          });
+    }
   }
 
   _onChangeHandle(e) {
@@ -26,17 +42,35 @@ class Form extends Component {
       return;
     }
 
-    console.log(this.state.boardNm);
+    if(this.id){
+      this._updateAction();
+    }else{
+      this._saveAction();
+    }
+
+  }
+
+  _saveAction() {
     axios.post('http://localhost:8080/api/board',
         {
           boardNm : this.state.boardNm
         }
     ).then((res) => {
-      console.log(res);
       alert(`${res.data.boardNm} 생성완료`);
       this.props.history.push('/admin/board/list');
     });
+  }
 
+  _updateAction() {
+    axios.put('http://localhost:8080/api/board',
+        {
+          boardId : this.state.boardId,
+          boardNm : this.state.boardNm
+        }
+    ).then((res) => {
+      alert(`${res.data.boardNm} 수정완료`);
+      this.props.history.push('/admin/board/list');
+    });
   }
 
 
@@ -45,7 +79,7 @@ class Form extends Component {
         <div className="ui form">
           <div className="field">
             <label>게시판이름</label>
-            <input type="text" name="first-name" placeholder="게시판이름" onChange={this._onChangeHandle.bind(this)}/>
+            <input type="text" name="first-name" placeholder="게시판이름" onChange={this._onChangeHandle.bind(this)} value={this.state.boardNm}/>
           </div>
  
           <button className="ui button" type="button" onClick={this._action.bind(this)}>생성</button>
