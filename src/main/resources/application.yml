@@ -1,7 +1,6 @@
 spring:
   profiles: local
 
-
   datasource:
     url: jdbc:mysql://52.79.150.33:3306/miniapi?useUnicode=true&charaterEncoding=utf-8
     username: root
@@ -39,9 +38,6 @@ security:
 
 spring:
   profiles: real
-
-  resources:
-    static-locations: classpath:/resources/,classpath:/static/
 
   datasource:
     url: jdbc:mysql://52.79.150.33:3306/miniapi?useUnicode=true&charaterEncoding=utf-8

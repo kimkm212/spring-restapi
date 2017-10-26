@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom'
 import axios from 'axios';
-import ListObject from './ListObject'
-
+import dateformat from 'dateformat';
+import API_URL from 'App-config';
 const propTypes = {};
 
 const defaultProps = {};
@@ -24,7 +24,7 @@ class List extends Component {
   }
 
   _getListData() {
-    axios.get(`http://localhost:8080/api/boardData/${this.state.boardId}/list/${this.state.page}`)
+    axios.get(`${API_URL}/api/boardData/${this.state.boardId}/list/${this.state.page}`)
         .then((res) => {
           this.setState({
             listData: res.data
@@ -33,9 +33,20 @@ class List extends Component {
   }
 
   _renderList() {
-    return this.state.listData.content.map( (content,index) => {
-      return <ListObject key={index} content={content} index={index} fnDel={this._del}/>
-    });
+    return this.state.listData.content.map( (content,index) =>
+          <tr key={index}>
+            <td>{index + 1}</td>
+            <td>
+              {content.subject}
+            </td>
+            <td>
+              {dateformat(new Date(content.regDate), 'yyyy-mm-dd')}
+            </td>
+            <td>
+              {content.udtDate ? dateformat(new Date(content.udtDate), 'yyyy-mm-dd') : ''}
+            </td>
+          </tr>
+    );
   }
 
   render() {

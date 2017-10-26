@@ -8,13 +8,13 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity @Data
-@Table(name = "POST")
-public class PostVO {
+@Table(name = "CONTENT")
+public class ContentVO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "POST_ID")
-    private Integer postId;
+    @Column(name = "CONTENT_ID")
+    private long contentId;
 
     @Column(name = "SUBJECT", nullable = false, length = 400)
     private String subject;
@@ -22,10 +22,12 @@ public class PostVO {
     @Column(name = "CONTENT", nullable = false)
     @Lob
     private String content;
+/*
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CATE_ID")
     private CategoryVO categoryVO;
+*/
 
     @CreationTimestamp
     @Column(name = "REG_DATE", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
