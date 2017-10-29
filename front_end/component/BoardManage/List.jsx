@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import API_URL from 'App-config';
+import prpts from 'App-propts';
 import AlertModal from '../Module/AlertModal';
 
 const propTypes = {};
@@ -23,7 +23,7 @@ class list extends Component {
   }
 
   getListData() {
-    axios.get(`${API_URL}/api/board/list/${this.state.page}`)
+    axios.get(`${prpts.API_URL}/api/board/list/${this.state.page}`)
       .then((res) => {
         this.setState({
           listData: res.data,
@@ -34,7 +34,7 @@ class list extends Component {
   del(boardNm, boardId) {
     return () => {
       if (confirm(`'${boardNm}' 게시판을 삭제합니다`)) {
-        axios.delete(`${API_URL}/api/board/${boardId}`)
+        axios.delete(`${prpts.API_URL}/api/board/${boardId}`)
           .then((res) => {
             this.getListData();
           });

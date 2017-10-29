@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import API_URL from 'App-config';
+import prpts from 'App-propts';
 
 const propTypes = {};
 
@@ -19,7 +19,7 @@ class Form extends Component {
 
   _getBoardData() {
     if (this.id) {
-      axios.get(`http://localhost:8080/api/board/${this.id}`)
+      axios.get(`${prpts.API_URL}/api/board/${this.id}`)
         .then((res) => {
           console.log(res.data);
           this.setState({
@@ -51,7 +51,7 @@ class Form extends Component {
 
   _saveAction() {
     axios.post(
-      `${API_URL}/api/board`,
+      `${prpts.API_URL}/api/board`,
       {
         boardNm: this.state.boardNm,
       },
@@ -63,7 +63,7 @@ class Form extends Component {
 
   _updateAction() {
     axios.put(
-      `${API_URL}/api/board`,
+      `${prpts.API_URL}/api/board`,
       {
         boardId: this.state.boardId,
         boardNm: this.state.boardNm,

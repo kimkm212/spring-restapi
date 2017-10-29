@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 import dateformat from 'dateformat';
-import API_URL from 'App-config';
+import prpts from 'App-propts';
 const propTypes = {};
 
 const defaultProps = {};
@@ -24,7 +24,7 @@ class List extends Component {
   }
 
   _getListData() {
-    axios.get(`${API_URL}/api/boardData/${this.state.boardId}/list/${this.state.page}`)
+    axios.get(`${prpts.API_URL}/api/boardData/${this.state.boardId}/list/${this.state.page}`)
         .then((res) => {
           this.setState({
             listData: res.data

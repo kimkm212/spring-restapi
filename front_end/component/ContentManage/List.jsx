@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {};
@@ -6,18 +6,15 @@ const propTypes = {};
 const defaultProps = {};
 
 class List extends Component {
-
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-        <div>
-
-        </div>
-    )
-  };
+      <div />
+    );
+  }
 }
 
 List.propTypes = propTypes;
