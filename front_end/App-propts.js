@@ -1,3 +1,3 @@
-module.export = {
+export default {
   API_URL: 'http://localhost:8080',
 };
